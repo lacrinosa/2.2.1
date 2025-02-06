@@ -1,6 +1,7 @@
 package hiber.service;
 
 import hiber.dao.UserDao;
+import hiber.dao.UserDaoImp;
 import hiber.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -36,15 +37,8 @@ public class UserServiceImp implements UserService {
       return userDao.listUsers();
    }
 
-   @Override
-   @Transactional
    public User getUserByCarModelAndSeries(String model, int series) {
-      Session session = sessionFactory.getCurrentSession();
-      String hql = "FROM User u WHERE u.car.model =: model AND u.car.series =: series";
-      Query<User> query = session.createQuery(hql, User.class);
-      query.setParameter("model", model);
-      query.setParameter("series", series);
-      return query.uniqueResult();
+      return getUserByCarModelAndSeries(model, series);
 
    }
 
