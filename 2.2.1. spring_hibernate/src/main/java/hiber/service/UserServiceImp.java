@@ -19,12 +19,6 @@ public class UserServiceImp implements UserService {
    @Autowired
    private UserDao userDao;
 
-   @Autowired
-   private LocalSessionFactoryBean getSessionFactory;
-
-   @Autowired
-   private SessionFactory sessionFactory;
-
    @Transactional
    @Override
    public void add(User user) {
